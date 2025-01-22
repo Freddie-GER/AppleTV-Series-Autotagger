@@ -1,20 +1,16 @@
 import sys
 from pathlib import Path
 from dotenv import load_dotenv
-from PyQt6.QtWidgets import QApplication, QMainWindow
+from PyQt6.QtWidgets import QApplication
 
-# Load environment variables
-env_path = Path(__file__).parent.parent / '.env'
-load_dotenv(env_path)
-
-class MainWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.setWindowTitle("TV Series Auto Tagger")
-        self.setGeometry(100, 100, 800, 600)
-        # TODO: Add GUI components
+from .gui.main_window import MainWindow
 
 def main():
+    # Load environment variables
+    env_path = Path(__file__).parent.parent / '.env'
+    load_dotenv(env_path)
+    
+    # Create and run application
     app = QApplication(sys.argv)
     window = MainWindow()
     window.show()
